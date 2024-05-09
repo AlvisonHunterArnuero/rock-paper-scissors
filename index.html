@@ -20,28 +20,41 @@
 
 <body>
     <div class="wrapper">
-        <div class="container mx-auto w-100 mt-4 h-100">
+        <div class="container mx-auto w-100 mt-5 h-100">
             <div class="row justify-content-center">
-                <h1 class="main-title text-center poppins-black text-uppercase">Yet Another Silly Game!</h1>
+                <h1 class="main-title text-center poppins-black text-uppercase">Yet Another Silly RPS Game!</h1>
                 <small class="w-50 text-muted text-end" id="musicSelector" onclick="bgMusic()">Music OFF 🔈</small>
             </div>
             <div class="row flex justify-content-center align-items-center">
-                <div class="col-12 col-md-6" id="player">😊</div>
-                <div class="col-12 col-md-6 text-dark align-items-center d-flex" id="computer">💻</div>
+                <div class="col-12 col-md-6" id="player">
+                    <img class="profiles" width="350" height="350" src="./img/ply_profile.png" alt="player"
+                        id="plyDisplay" />
+                </div>
+                <div class="col-12 col-md-6 text-dark align-items-center d-flex" id="computer">
+                    <img class="profiles" width="350" height="350" src="./img/cpu_profile.png" alt="cpu"
+                        id="cpuDisplay" />
+                </div>
             </div>
 
             <div class="w-50 mx-auto row flex justify-content-between align-items-center text-center">
-                <div class="col fs-3 text-center text-white" id="playerScore">Points: 0</div>
+                <div class="col fs-2 text-center text-white" id="playerScore">Points: 0</div>
                 <div class="col-12 col-md-6 fs-3 text-center text-white" id="computerScore">Points: 0</div>
             </div>
 
             <div class="row mx-auto flex align-items-center">
-                <div class="col-12 text-warning h4 text-uppercase text-center my-4" id="result">No results</div>
+                <div class="col-12 text-warning h1 text-uppercase text-center my-4" id="result">No results</div>
                 <div class="col-12">
                     <div class="row w-50 mx-auto flex justify-content-between align-items-center">
-                        <div class="col-4 display-1 spin-btn" onclick="play('rock')"><span>✊</span></div>
-                        <div class="col-4 display-1 spin-btn" onclick="play('paper')"><span>🖐️</span></div>
-                        <div class="col-4 display-1 spin-btn" onclick="play('scissors')"><span>✌️</span></div>
+                        <div class="col-4">
+                            <img class="spin-btn" src="./img/rock.png" alt="" id="rockBtn" onclick="play('rock')" />
+                        </div>
+                        <div class="col-4">
+                            <img onclick="play('paper')" class="spin-btn" src="./img/paper.png" alt="" id="paperBtn" />
+                        </div>
+                        <div class="col-4">
+                            <img class="spin-btn" src="./img/scissors.png" alt="" id="scissorsBtn"
+                                onclick="play('scissors')" />
+                        </div>
                     </div>
 
                 </div>
@@ -51,9 +64,7 @@
     </div>
 
     <audio id="clickSound">
-        <source
-            src="./audios/click.mp3"
-            type="audio/mpeg">
+        <source src="./audios/click.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -61,10 +72,10 @@
         <source src="./audios/tada.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-        <audio id="loseSound">
-            <source src="./audios/lose.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+    <audio id="loseSound">
+        <source src="./audios/lose.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <audio id="bkMusic" autoplay loop>
         <source src="./audios/bassa_island.mp3" type="audio/mpeg">

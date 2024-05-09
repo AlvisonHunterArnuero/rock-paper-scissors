@@ -7,7 +7,8 @@ body {
     background-repeat: no-repeat;
 }
 
-#player, #computer {
+#player,
+#computer {
     height: 350px;
     width: 350px;
     display: flex;
@@ -28,13 +29,29 @@ body {
 }
 
 .spin-btn {
-    width: 200px;
-    height: 200px;
     cursor: pointer;
 }
 
+.spin-btn:hover {
+    transform: scale(1.1);
+    border: 2px solid #27215E;
+}
+
+.profiles {
+    border: 2px solid #63855b;
+    border-radius: 12px;
+}
+
+#rockBtn,
+#paperBtn,
+#scissorsBtn {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+
 .main-title {
-    font-size: 80px;
+    font-size: 70px;
     color: #63855b;
     text-shadow: 2px 2px 2px #98b597;
 }

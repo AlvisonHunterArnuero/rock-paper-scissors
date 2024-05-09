@@ -2,7 +2,7 @@
 const choices = ['rock', 'paper', 'scissors'];
 
 // Responses passed to Emojies to display it on screen
-const responses = {
+const rules = {
   rock: '✊',
   paper: '🖐️',
   scissors: '✌️',
@@ -21,6 +21,8 @@ const computer = document.getElementById('computer');
 const result = document.getElementById('result');
 const playerScore = document.getElementById('playerScore');
 const computerScore = document.getElementById('computerScore');
+const plyDisplay = document.getElementById('plyDisplay');
+const cpuDisplay = document.getElementById('cpuDisplay');
 
 // function to get a random choice from the choice array
 function getRndChoice() {
@@ -34,12 +36,13 @@ function play(playerChoice) {
   // Get the random choice for CPU
   const computerChoice = getRndChoice();
   // Set both player and CPU with their chosen options
-  player.innerText = responses[playerChoice];
-  computer.innerText = responses[computerChoice];
+
+  plyDisplay.src = `animations/ply_${playerChoice}.gif`;
+  cpuDisplay.src = `animations/ply_${computerChoice}.gif`;
 
   // Game Validations
   if (playerChoice === computerChoice) {
-    result.innerText = "It's a draw! 😌";
+    result.innerText = 'It is a draw! 😌';
   } else if (
     (playerChoice === 'rock' && computerChoice === 'scissors') ||
     (playerChoice === 'paper' && computerChoice === 'rock') ||
@@ -73,3 +76,20 @@ function bgMusic() {
     bgMusicAudioTag.setAttribute('class', 'w-50 text-end');
   }
 }
+
+window.onload = function () {
+  // Check if 'myKey' exists in localStorage
+  if (localStorage.getItem('prevScore')) {
+    // Retrieve the content of 'prevScore' from localStorage
+    const prevScore = JSON.parse(localStorage.getItem('prevScore'));
+    console.log('Retrieved prevScore from localStorage:', prevScore);
+  } else {
+    // Initialize 'prevScore' with plyCounter and cpuCounter set to 0
+    const prevScore = {
+      plyCounter: 0,
+      cpuCounter: 0,
+    };
+    localStorage.setItem('prevScore', JSON.stringify(prevScore));
+    console.log('Initialized prevScore in localStorage:', prevScore);
+  }
+};
