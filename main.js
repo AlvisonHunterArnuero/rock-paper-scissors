@@ -67,12 +67,12 @@ function bgMusic() {
     bkMusic.pause();
     bkMusic.currentTime = 0;
     isMusicOn = false;
-    bgMusicAudioTag.innerText = 'Music OFF 🔈';
+    bgMusicAudioTag.innerText = 'Turn Music ON 🔈';
     bgMusicAudioTag.setAttribute('class', 'w-50 text-end text-muted');
   } else {
     bkMusic.play();
     isMusicOn = true;
-    bgMusicAudioTag.innerText = 'Music ON 🔊';
+    bgMusicAudioTag.innerText = 'Turn Music OFF 🔊';
     bgMusicAudioTag.setAttribute('class', 'w-50 text-end');
   }
 }
