@@ -51,12 +51,12 @@ function play(playerChoice) {
     result.innerText = 'You win! 😄';
     winSound.play();
     plyCounter += 1; // increase player score
-    playerScore.innerText = `Points: ${plyCounter}`; // update score on screen
+    playerScore.innerText = `Player: ${plyCounter}`; // update score on screen
   } else {
     result.innerText = 'You lose! 😢';
     loseSound.play();
     cpuCounter += 1; // increase CPU score
-    computerScore.innerText = `Points: ${cpuCounter}`; // update score on screen
+    computerScore.innerText = `Computer: ${cpuCounter}`; // update score on screen
   }
 }
 
