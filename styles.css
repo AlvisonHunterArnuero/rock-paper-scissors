@@ -1,32 +1,31 @@
 body {
-    background-color: #2e4b27;
+    background-color: #000000;
     height: 100vh;
-    font-size: 25px;
+    font-size: 1.6rem;
     background-image: url(./bgRPS.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    object-fit: cover;
 }
 
 #player,
 #computer {
-    height: 350px;
-    width: 350px;
+    height: 300px;
+    width: 300px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 20px;
-    font-size: 200px;
     border-radius: 15px;
-    border: 2px solid #597852;
+    border: 2px solid #63855b;
 }
 
-#player {
-    background-color: #496842;
-}
-
-#computer {
-    background-color: #63855b;
+#player:hover,
+#computer:hover {
+    border-radius: 60% 20% / 10% 40%;
+    transform: rotateX(0);
+    transition: all 0.5s ease-in-out;
 }
 
 /* Turning action buttons to grayscale */
@@ -74,19 +73,36 @@ body {
     margin-top: 8vh;
 }
 
-/* Fonts Part */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #3b4f36;
+    color: #98b597;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer>p {
+    font-size: 14px;
+}
+
+/* Footer */
 .poppins-thin {
     font-family: "Poppins", sans-serif;
     font-weight: 100;
     font-style: normal;
 }
 
+/* Turn Music On */
 .poppins-extralight {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
     font-style: normal;
 }
 
+/* Player Scores */
 .poppins-light {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
@@ -99,6 +115,7 @@ body {
     font-style: normal;
 }
 
+/* Game Messaging Section */
 .poppins-medium {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
@@ -181,4 +198,26 @@ body {
     font-family: "Poppins", sans-serif;
     font-weight: 900;
     font-style: italic;
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    #rockBtn,
+    #paperBtn,
+    #scissorsBtn {
+        border-radius: 50%;
+        margin-top: 12px;
+    }
+
+    .main-title {
+        font-size: 25px;
+        color: #63855b;
+        text-shadow: none;
+    }
+
+    body {
+        font-size: 1rem;
+        bottom: 400px;
+    }
 }

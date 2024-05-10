@@ -8,11 +8,11 @@ const rules = {
   scissors: '✌️',
 };
 
-// counters initiation
+// Counters initiation
 let plyCounter = 0;
 let cpuCounter = 0;
 
-// set background music to false on start
+// Set background music to false on start
 let isMusicOn = false;
 
 // Set instances of all elements involved on the game
@@ -24,7 +24,11 @@ const computerScore = document.getElementById('computerScore');
 const plyDisplay = document.getElementById('plyDisplay');
 const cpuDisplay = document.getElementById('cpuDisplay');
 
-// function to get a random choice from the choice array
+// Toast section
+const toastLiveExample = document.getElementById('liveToast');
+const toast = new bootstrap.Toast(toastLiveExample);
+
+// Function to get a random choice from the choice array
 function getRndChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
@@ -50,13 +54,13 @@ function play(playerChoice) {
   ) {
     result.innerText = 'You win! 😄';
     winSound.play();
-    plyCounter += 1; // increase player score
-    playerScore.innerText = `Player: ${plyCounter}`; // update score on screen
+    plyCounter += 1; // Increase player score
+    playerScore.innerText = `Player: ${plyCounter}`; // Update score on screen
   } else {
     result.innerText = 'You lose! 😢';
     loseSound.play();
-    cpuCounter += 1; // increase CPU score
-    computerScore.innerText = `Computer: ${cpuCounter}`; // update score on screen
+    cpuCounter += 1; // Increase CPU score
+    computerScore.innerText = `Computer: ${cpuCounter}`; // Update score on screen
   }
   localStorage.setItem(
     'prevScore',
@@ -75,26 +79,35 @@ function bgMusic() {
     bkMusic.currentTime = 0;
     isMusicOn = false;
     bgMusicAudioTag.innerText = 'Turn Music ON 🔈';
-    bgMusicAudioTag.setAttribute('class', 'w-50 text-end text-muted');
+    // Set class attributes to simulate toggling
+    bgMusicAudioTag.setAttribute(
+      'class',
+      'w-50 text-muted text-end poppins-extralight'
+    );
   } else {
     bkMusic.play();
     isMusicOn = true;
     bgMusicAudioTag.innerText = 'Turn Music OFF 🔊';
-    bgMusicAudioTag.setAttribute('class', 'w-50 text-end');
+    bgMusicAudioTag.setAttribute(
+      'class',
+      'w-50 text-end poppins-extralight'
+    );
   }
+}
+
+function retrieveMatchScore() {
+  // Retrieve the content of 'prevScore' from localStorage
+  const prevScore = JSON.parse(localStorage.getItem('prevScore'));
+  plyCounter = prevScore.plyCounter;
+  cpuCounter = prevScore.cpuCounter;
+  playerScore.innerText = `Player: ${plyCounter}`;
+  computerScore.innerText = `Computer: ${cpuCounter}`;
 }
 
 // Check if 'prevScore' exists in localStorage
 if (localStorage.getItem('prevScore')) {
-  // Retrieve the content of 'prevScore' from localStorage
-  const prevScore = JSON.parse(localStorage.getItem('prevScore'));
   // Confirm if user wants to resume previous match scores
-  if (confirm('Resume previous match?')) {
-    plyCounter = prevScore.plyCounter;
-    cpuCounter = prevScore.cpuCounter;
-    playerScore.innerText = `Player: ${plyCounter}`;
-    computerScore.innerText = `Computer: ${cpuCounter}`;
-  }
+  toast.show();
 } else {
   // Initialize 'prevScore' with plyCounter and cpuCounter set to 0
   const prevScore = {

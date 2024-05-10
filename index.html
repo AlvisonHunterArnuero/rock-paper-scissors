@@ -19,53 +19,91 @@
 </head>
 
 <body>
+
     <div class="wrapper">
-        <div class="container mx-auto w-100 mt-5 h-100">
+        <div class="container mx-auto mw-100 mh-100">
+            <div class="row">
+                <!-- Flexbox container for aligning the toasts -->
+                <div aria-live="polite" aria-atomic="true"
+                    class="d-flex justify-content-center align-items-center w-100 position-absolute">
+                    <!-- Then put toasts within -->
+                    <div id="liveToast" data-bs-delay="9600" class="toast align-items-center" role="alert"
+                        aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img src="./img/scissorsIcon.png" width="40px" class="rounded me-2"
+                                alt="Rock Paper Scissors">
+                            <strong class="me-auto">RPS Game:</strong>
+                            <small>By CodeCrafters Labs</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Resume previous match Scores?
+                            <div class="mt-2 pt-2 border-top">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast"
+                                    data-bs-target="#liveToast" onclick="retrieveMatchScore()">Ok</button>
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                    data-bs-dismiss="toast">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row justify-content-center">
-                <h1 class="main-title text-center poppins-black text-uppercase">Yet Another Silly RPS Game!</h1>
-                <small class="w-50 text-muted text-end" id="musicSelector" onclick="bgMusic()">Turn Music ON 🔈</small>
+                <h1 class="main-title text-center poppins-semibold text-uppercase">Yet Another Silly RPS Game!</h1>
+                <small class="poppins-extralight w-50 text-muted text-end" id="musicSelector" onclick="bgMusic()">
+                    Turn Music ON
+                    🔈</small>
             </div>
             <div class="row justify-content-center">
                 <p></p>
             </div>
             <div class="row flex justify-content-center align-items-center">
                 <div class="col-12 col-md-6" id="player">
-                    <img class="profiles" width="350" height="350" src="./img/ply_profile.png" alt="player"
-                        id="plyDisplay" />
+                    <img class="img-fluid profiles" src="./img/ply_profile.png" alt="player" id="plyDisplay" />
                 </div>
                 <div class="col-12 col-md-6" id="computer">
-                    <img class="profiles" width="350" height="350" src="./img/cpu_profile.png" alt="cpu"
-                        id="cpuDisplay" />
+                    <img class="img-fluid profiles" src="./img/cpu_profile.png" alt="cpu" id="cpuDisplay" />
                 </div>
             </div>
 
             <div class="w-50 mx-auto row flex justify-content-between align-items-center text-center">
-                <div class="col fs-2 text-center text-white" id="playerScore">Player: 0</div>
-                <div class="col-12 col-md-6 fs-3 text-center text-white" id="computerScore">Computer: 0</div>
+                <div class="col-12 col-md-6 poppins-light text-center text-white" id="playerScore">Player: 0</div>
+                <div class="col-12 col-md-6 poppins-light text-center text-white" id="computerScore">Computer: 0</div>
             </div>
             <div class="row mx-auto flex align-items-center">
-                <div class="col-12 text-warning h2 text-uppercase text-center my-4" id="result">
+                <div class="col-12 text-warning text-uppercase text-center my-4 poppins-medium" id="result">
                     No results
                 </div>
                 <div class="col-12">
-                    <div class="row w-50 mx-auto flex justify-content-between align-items-center">
+                    <div class="row w-50 mx-auto flex justify-content-between">
                         <div class="col-6 col-md-4">
-                            <img class="spin-btn" src="./img/rock.png" alt="rock button" id="rockBtn"
+                            <img class="spin-btn img-fluid" src="./img/rock.png" alt="rock button" id="rockBtn"
                                 onclick="play('rock')" />
                         </div>
                         <div class="col-6 col-md-4">
-                            <img class="spin-btn" src="./img/paper.png" alt="paper button" id="paperBtn"
+                            <img class="spin-btn img-fluid" src="./img/paper.png" alt="paper button" id="paperBtn"
                                 onclick="play('paper')" />
                         </div>
                         <div class="col-6 col-md-4">
-                            <img class="spin-btn" src="./img/scissors.png" alt="scissors button" id="scissorsBtn"
-                                onclick="play('scissors')" />
+                            <img class="spin-btn img-fluid" src="./img/scissors.png" alt="scissors button"
+                                id="scissorsBtn" onclick="play('scissors')" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p class="fs-6 fw-light poppins-thin">&copy; May 24th, 2024 - by CCL Mentoring Program. All Right Reserved.
+                Created for
+                Educational
+                Purposes.</p>
+        </div>
+    </footer>
 
     <audio id="clickSound">
         <source src="./audios/click.mp3" type="audio/mpeg">
