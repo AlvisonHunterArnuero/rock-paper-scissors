@@ -5,6 +5,7 @@ body {
     background-image: url(./bgRPS.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #player,
@@ -42,8 +43,7 @@ body {
     -moz-filter: contrast(200%);
     filter: contrast(200%);
     transform: scale(1.1);
-    background: linear-gradient(35deg, rgba(2, 0, 36, 1) 0%, rgba(65, 55, 161, 1) 35%, rgba(6, 187, 223, 1) 100%);
-    border: 4px solid #4137a1;
+    border: 3px solid #4137a1;
 }
 
 
@@ -55,19 +55,23 @@ body {
 #rockBtn,
 #paperBtn,
 #scissorsBtn {
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
     border-radius: 50%;
 }
 
 .main-title {
-    font-size: 70px;
+    font-size: 60px;
     color: #63855b;
     text-shadow: 2px 2px 2px #98b597;
 }
 
 #musicSelector {
     color: #99ce99;
+}
+
+.wrapper {
+    margin-top: 8vh;
 }
 
 /* Fonts Part */

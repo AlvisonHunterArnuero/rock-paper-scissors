@@ -33,7 +33,7 @@
                     <img class="profiles" width="350" height="350" src="./img/ply_profile.png" alt="player"
                         id="plyDisplay" />
                 </div>
-                <div class="col-12 col-md-6 text-dark align-items-center d-flex" id="computer">
+                <div class="col-12 col-md-6" id="computer">
                     <img class="profiles" width="350" height="350" src="./img/cpu_profile.png" alt="cpu"
                         id="cpuDisplay" />
                 </div>
@@ -44,25 +44,27 @@
                 <div class="col-12 col-md-6 fs-3 text-center text-white" id="computerScore">Computer: 0</div>
             </div>
             <div class="row mx-auto flex align-items-center">
-                <div class="col-12 text-warning h1 text-uppercase text-center my-4" id="result">No results</div>
+                <div class="col-12 text-warning h2 text-uppercase text-center my-4" id="result">
+                    No results
+                </div>
                 <div class="col-12">
                     <div class="row w-50 mx-auto flex justify-content-between align-items-center">
                         <div class="col-6 col-md-4">
-                            <img class="spin-btn" src="./img/rock.png" alt="" id="rockBtn" onclick="play('rock')" />
+                            <img class="spin-btn" src="./img/rock.png" alt="rock button" id="rockBtn"
+                                onclick="play('rock')" />
                         </div>
                         <div class="col-6 col-md-4">
-                            <img class="spin-btn mx-4" src="./img/paper.png" alt="" id="paperBtn"
+                            <img class="spin-btn" src="./img/paper.png" alt="paper button" id="paperBtn"
                                 onclick="play('paper')" />
                         </div>
-                        <div class="col-12 col-md-4">
-                            <img class="spin-btn my-3" src="./img/scissors.png" alt="" id="scissorsBtn"
+                        <div class="col-6 col-md-4">
+                            <img class="spin-btn" src="./img/scissors.png" alt="scissors button" id="scissorsBtn"
                                 onclick="play('scissors')" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <audio id="clickSound">
