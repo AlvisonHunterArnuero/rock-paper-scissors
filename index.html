@@ -25,13 +25,12 @@
             <div class="row">
                 <!-- Flexbox container for aligning the toasts -->
                 <div aria-live="polite" aria-atomic="true"
-                    class="d-flex justify-content-center align-items-center w-100 position-absolute">
+                    class="zindex-modal d-flex justify-content-center align-items-center w-100 position-absolute">
                     <!-- Then put toasts within -->
                     <div id="liveToast" data-bs-delay="9600" class="toast align-items-center" role="alert"
                         aria-live="assertive" aria-atomic="true">
                         <div class="toast-header">
-                            <img src="./img/scissorsIcon.png" width="40px" class="rounded me-2"
-                                alt="Rock Paper Scissors">
+                            <img src="./img/scissors.svg" width="40px" class="rounded me-2" alt="Rock Paper Scissors">
                             <strong class="me-auto">RPS Game:</strong>
                             <small>By CodeCrafters Labs</small>
                             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -46,9 +45,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><!-- Flexbox container ends -->
             </div>
-
 
             <div class="row justify-content-center">
                 <h1 class="main-title text-center poppins-semibold text-uppercase">Yet Another Silly RPS Game!</h1>
@@ -56,9 +54,7 @@
                     Turn Music ON
                     🔈</small>
             </div>
-            <div class="row justify-content-center">
-                <p></p>
-            </div>
+
             <div class="row flex justify-content-center align-items-center">
                 <div class="col-12 col-md-6" id="player">
                     <img class="img-fluid profiles" src="./img/ply_profile.png" alt="player" id="plyDisplay" />
@@ -98,10 +94,14 @@
 
     <footer>
         <div class="container">
-            <p class="fs-6 fw-light poppins-thin">&copy; May 24th, 2024 - by CCL Mentoring Program. All Right Reserved.
-                Created for
-                Educational
-                Purposes.</p>
+            <div class="flex row justify-content-center align-items-bottom">
+                <p class="copyright-text m-0 fs-6 fw-light">&copy; May 24th, 2024 - by CCL Mentoring Program. All Right
+                    Reserved.
+                    Created for
+                    Educational
+                    Purposes.</p>
+            </div>
+
         </div>
     </footer>
 

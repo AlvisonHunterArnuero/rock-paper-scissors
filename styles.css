@@ -67,6 +67,7 @@ body {
 
 #musicSelector {
     color: #99ce99;
+    font-size: 18px !important;
 }
 
 .wrapper {
@@ -79,13 +80,13 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: #3b4f36;
-    color: #98b597;
     text-align: center;
     padding: 10px 0;
 }
 
-footer>p {
-    font-size: 14px;
+.copyright-text {
+    font-size: 14px !important;
+    color: #98b597;
 }
 
 /* Footer */
