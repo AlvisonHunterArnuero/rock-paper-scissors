@@ -58,6 +58,13 @@ function play(playerChoice) {
     cpuCounter += 1; // increase CPU score
     computerScore.innerText = `Computer: ${cpuCounter}`; // update score on screen
   }
+  localStorage.setItem(
+    'prevScore',
+    JSON.stringify({
+      plyCounter: plyCounter,
+      cpuCounter: cpuCounter,
+    })
+  );
 }
 
 // This function is to control background music with a toggle button
@@ -77,19 +84,22 @@ function bgMusic() {
   }
 }
 
-window.onload = function () {
-  // Check if 'myKey' exists in localStorage
-  if (localStorage.getItem('prevScore')) {
-    // Retrieve the content of 'prevScore' from localStorage
-    const prevScore = JSON.parse(localStorage.getItem('prevScore'));
-    console.log('Retrieved prevScore from localStorage:', prevScore);
-  } else {
-    // Initialize 'prevScore' with plyCounter and cpuCounter set to 0
-    const prevScore = {
-      plyCounter: 0,
-      cpuCounter: 0,
-    };
-    localStorage.setItem('prevScore', JSON.stringify(prevScore));
-    console.log('Initialized prevScore in localStorage:', prevScore);
+// Check if 'prevScore' exists in localStorage
+if (localStorage.getItem('prevScore')) {
+  // Retrieve the content of 'prevScore' from localStorage
+  const prevScore = JSON.parse(localStorage.getItem('prevScore'));
+  // Confirm if user wants to resume previous match scores
+  if (confirm('Resume previous match?')) {
+    plyCounter = prevScore.plyCounter;
+    cpuCounter = prevScore.cpuCounter;
+    playerScore.innerText = `Player: ${plyCounter}`;
+    computerScore.innerText = `Computer: ${cpuCounter}`;
   }
-};
+} else {
+  // Initialize 'prevScore' with plyCounter and cpuCounter set to 0
+  const prevScore = {
+    plyCounter: 0,
+    cpuCounter: 0,
+  };
+  localStorage.setItem('prevScore', JSON.stringify(prevScore));
+}
