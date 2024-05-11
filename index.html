@@ -25,7 +25,7 @@
             <div class="row">
                 <!-- Flexbox container for aligning the toasts -->
                 <div aria-live="polite" aria-atomic="true"
-                    class="zindex-modal d-flex justify-content-center align-items-center w-100 position-absolute">
+                    class="zindex-offcanvas d-flex justify-content-center align-items-center w-100 position-absolute">
                     <!-- Then put toasts within -->
                     <div id="liveToast" data-bs-delay="9600" class="toast align-items-center" role="alert"
                         aria-live="assertive" aria-atomic="true">
@@ -39,7 +39,7 @@
                             Resume previous match Scores?
                             <div class="mt-2 pt-2 border-top">
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast"
-                                    data-bs-target="#liveToast" onclick="retrieveMatchScore()">Ok</button>
+                                    data-bs-target="#liveToast" onclick="retrieveMatchScores()">Ok</button>
                                 <button type="button" class="btn btn-secondary btn-sm"
                                     data-bs-dismiss="toast">Cancel</button>
                             </div>

@@ -39,8 +39,8 @@ function play(playerChoice) {
 
   // Get the random choice for CPU
   const computerChoice = getRndChoice();
-  // Set both player and CPU with their chosen options
 
+  // Set both player and CPU with their chosen options
   plyDisplay.src = `animations/ply_${playerChoice}.gif`;
   cpuDisplay.src = `animations/ply_${computerChoice}.gif`;
 
@@ -62,6 +62,8 @@ function play(playerChoice) {
     cpuCounter += 1; // Increase CPU score
     computerScore.innerText = `Computer: ${cpuCounter}`; // Update score on screen
   }
+
+  // Save the current scores on the local Storage key
   localStorage.setItem(
     'prevScore',
     JSON.stringify({
@@ -95,7 +97,7 @@ function bgMusic() {
   }
 }
 
-function retrieveMatchScore() {
+function retrieveMatchScores() {
   // Retrieve the content of 'prevScore' from localStorage
   const prevScore = JSON.parse(localStorage.getItem('prevScore'));
   plyCounter = prevScore.plyCounter;
