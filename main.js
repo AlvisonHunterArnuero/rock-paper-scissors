@@ -1,39 +1,65 @@
-// Game Options for both player or CPU
+/**
+ * @constant {Array<string>} choices - Game options for both player and CPU.
+ */
 const choices = ['rock', 'paper', 'scissors'];
 
-// Responses passed to Emojies to display it on screen
+/**
+ * @constant {Object} rules - Mapping of game choices to emojis for display.
+ */
 const rules = {
   rock: '✊',
   paper: '🖐️',
   scissors: '✌️',
 };
 
-// Counters initiation
+/** @var {number} plyCounter - Player's score counter. */
 let plyCounter = 0;
+
+/** @var {number} cpuCounter - CPU's score counter. */
 let cpuCounter = 0;
 
-// Set background music to false on start
+/** @var {boolean} isMusicOn - Tracks background music state (on/off). */
 let isMusicOn = false;
 
-// Set instances of all elements involved on the game
+// Set instances of all elements involved in the game
+/** @type {HTMLElement} */
 const player = document.getElementById('player');
+/** @type {HTMLElement} */
 const computer = document.getElementById('computer');
+/** @type {HTMLElement} */
 const result = document.getElementById('result');
+/** @type {HTMLElement} */
 const playerScore = document.getElementById('playerScore');
+/** @type {HTMLElement} */
 const computerScore = document.getElementById('computerScore');
+/** @type {HTMLImageElement} */
 const plyDisplay = document.getElementById('plyDisplay');
+/** @type {HTMLImageElement} */
 const cpuDisplay = document.getElementById('cpuDisplay');
 
-// Toast section
+/** @type {HTMLElement} */
 const toastLiveExample = document.getElementById('liveToast');
+/** @type {bootstrap.Toast} */
 const toast = new bootstrap.Toast(toastLiveExample);
 
-// Function to get a random choice from the choice array
+/**
+ * Generates a random choice for the CPU.
+ * @returns {string} A random choice of 'rock', 'paper', or 'scissors'.
+ */
 function getRndChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
-// Main function to be executed on every click event of the 3 options
+
+/**
+ * Main function to handle the game logic for each player choice.
+ * @async
+ * @param {string} playerChoice - The player's choice ('rock', 'paper', or 'scissors').
+ * @returns {Promise<void>}
+ */
 async function play(playerChoice) {
+  // lets reset the game current win state
+  result.innerText = '... ';
+
   // Play the click sound and wait for it to finish
   await clickSound.play();
 
@@ -44,7 +70,7 @@ async function play(playerChoice) {
   plyDisplay.src = `animations/ply_${playerChoice}.gif`;
   cpuDisplay.src = `animations/ply_${computerChoice}.gif`;
 
-  await delay(1000); // Delay for 1 second, adjust this time as necessary
+  await delay(500); // Delay for 1 second, adjust this time as necessary
 
   // Game Validations
   if (playerChoice === computerChoice) {
@@ -65,7 +91,7 @@ async function play(playerChoice) {
     computerScore.innerText = `Computer: ${cpuCounter}`; // Update score on screen
   }
 
-  // Save the current scores on the local Storage key
+  // Save the current scores on the local storage key
   localStorage.setItem(
     'prevScore',
     JSON.stringify({
@@ -75,12 +101,19 @@ async function play(playerChoice) {
   );
 }
 
-// Helper function to simulate a delay (for animations or game effects)
+/**
+ * Creates a delay for a specified duration.
+ * @param {number} ms - The number of milliseconds to delay.
+ * @returns {Promise<void>}
+ */
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// This function is to control background music with a toggle button
+/**
+ * Toggles background music on or off.
+ * Controls the background music playback and updates UI accordingly.
+ */
 function bgMusic() {
   const bgMusicAudioTag = document.getElementById('musicSelector');
   if (isMusicOn === true) {
@@ -88,7 +121,6 @@ function bgMusic() {
     bkMusic.currentTime = 0;
     isMusicOn = false;
     bgMusicAudioTag.innerText = 'Turn Music ON 🔈';
-    // Set class attributes to simulate toggling
     bgMusicAudioTag.setAttribute(
       'class',
       'w-50 text-muted text-end poppins-extralight'
@@ -104,7 +136,10 @@ function bgMusic() {
   }
 }
 
-// Retrieve the content of 'prevScore' from localStorage
+/**
+ * Retrieves the saved match scores from localStorage.
+ * Updates the UI with the previous player and CPU scores.
+ */
 function retrieveMatchScores() {
   const prevScore = JSON.parse(localStorage.getItem('prevScore'));
   plyCounter = prevScore.plyCounter;
@@ -113,7 +148,7 @@ function retrieveMatchScores() {
   computerScore.innerText = `Computer: ${cpuCounter}`;
 }
 
-// Check if 'prevScore' exists in localStorage
+// Check if 'prevScore' exists in localStorage and update UI accordingly
 if (localStorage.getItem('prevScore')) {
   // Confirm if user wants to resume previous match scores
   toast.show();
