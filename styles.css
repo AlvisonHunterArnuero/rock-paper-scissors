@@ -68,10 +68,11 @@ body {
 #musicSelector {
     color: #99ce99;
     font-size: 18px !important;
+    cursor: pointer;
 }
 
 .wrapper {
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 
 footer {
@@ -89,6 +90,9 @@ footer {
     color: #98b597;
 }
 
+img {
+    z-index: 1;
+}
 /* Footer */
 .poppins-thin {
     font-family: "Poppins", sans-serif;

@@ -32,17 +32,19 @@ const toast = new bootstrap.Toast(toastLiveExample);
 function getRndChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
-
 // Main function to be executed on every click event of the 3 options
-function play(playerChoice) {
-  clickSound.play();
+async function play(playerChoice) {
+  // Play the click sound and wait for it to finish
+  await clickSound.play();
 
   // Get the random choice for CPU
-  const computerChoice = getRndChoice();
+  const computerChoice = await getRndChoice();
 
   // Set both player and CPU with their chosen options
   plyDisplay.src = `animations/ply_${playerChoice}.gif`;
   cpuDisplay.src = `animations/ply_${computerChoice}.gif`;
+
+  await delay(1000); // Delay for 1 second, adjust this time as necessary
 
   // Game Validations
   if (playerChoice === computerChoice) {
@@ -53,12 +55,12 @@ function play(playerChoice) {
     (playerChoice === 'scissors' && computerChoice === 'paper')
   ) {
     result.innerText = 'You win! 😄';
-    winSound.play();
+    await winSound.play();
     plyCounter += 1; // Increase player score
     playerScore.innerText = `Player: ${plyCounter}`; // Update score on screen
   } else {
     result.innerText = 'You lose! 😢';
-    loseSound.play();
+    await loseSound.play();
     cpuCounter += 1; // Increase CPU score
     computerScore.innerText = `Computer: ${cpuCounter}`; // Update score on screen
   }
@@ -71,6 +73,11 @@ function play(playerChoice) {
       cpuCounter: cpuCounter,
     })
   );
+}
+
+// Helper function to simulate a delay (for animations or game effects)
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // This function is to control background music with a toggle button
@@ -97,8 +104,8 @@ function bgMusic() {
   }
 }
 
+// Retrieve the content of 'prevScore' from localStorage
 function retrieveMatchScores() {
-  // Retrieve the content of 'prevScore' from localStorage
   const prevScore = JSON.parse(localStorage.getItem('prevScore'));
   plyCounter = prevScore.plyCounter;
   cpuCounter = prevScore.cpuCounter;

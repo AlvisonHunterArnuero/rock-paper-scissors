@@ -1,0 +1,20 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.autoSave": "onFocusChange",
+    "files.eol": "\n",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "javascript.format.enable": true,
+    "prettier.useEditorConfig": true,
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.trailingComma": "es5",
+    "prettier.arrowParens": "avoid",
+    "prettier.tabWidth": 2,
+    "prettier.useTabs": false,
+    "prettier.bracketSpacing": true,
+}

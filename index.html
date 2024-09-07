@@ -5,7 +5,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -15,17 +14,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Rock, Paper, Scissors </title>
 </head>
 
 <body>
-
     <div class="wrapper">
         <div class="container mx-auto mw-100 mh-100">
             <div class="row">
                 <!-- Flexbox container for aligning the toasts -->
                 <div aria-live="polite" aria-atomic="true"
-                    class="zindex-offcanvas d-flex justify-content-center align-items-center w-100 position-absolute">
+                    class="zindex-offcanvas d-flex justify-content-center align-items-center w-100">
                     <!-- Then put toasts within -->
                     <div id="liveToast" data-bs-delay="9600" class="toast align-items-center" role="alert"
                         aria-live="assertive" aria-atomic="true">
@@ -35,9 +36,7 @@
                             <small>By CodeCrafters Labs</small>
                             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                         </div>
-                        <div class="toast-body">
-                            Resume previous match Scores?
-                            <div class="mt-2 pt-2 border-top">
+                        <div class="toast-body"> Resume previous match Scores? <div class="mt-2 pt-2 border-top">
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="toast"
                                     data-bs-target="#liveToast" onclick="retrieveMatchScores()">Ok</button>
                                 <button type="button" class="btn btn-secondary btn-sm"
@@ -45,45 +44,41 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- Flexbox container ends -->
-            </div>
-
+                </div>
+                <!-- Flexbox container ends -->
+                </div>
             <div class="row justify-content-center">
                 <h1 class="main-title text-center poppins-semibold text-uppercase">Yet Another Silly RPS Game!</h1>
-                <small class="poppins-extralight w-50 text-muted text-end" id="musicSelector" onclick="bgMusic()">
-                    Turn Music ON
-                    🔈</small>
+                <small class="poppins-extralight w-50 text-muted text-end" id="musicSelector" onclick="bgMusic()"> Turn
+                    Music ON 🔈</small>
             </div>
-
-            <div class="row flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-12 col-md-6" id="player">
-                    <img class="img-fluid profiles" src="./img/ply_profile.png" alt="player" id="plyDisplay" />
+                    <img class="img-fluid profiles" lazy src="./img/ply_profile.png" alt="player" id="plyDisplay" />
                 </div>
                 <div class="col-12 col-md-6" id="computer">
-                    <img class="img-fluid profiles" src="./img/cpu_profile.png" alt="cpu" id="cpuDisplay" />
+                    <img class="img-fluid profiles" lazy src="./img/cpu_profile.png" alt="cpu" id="cpuDisplay" />
                 </div>
             </div>
-
-            <div class="w-50 mx-auto row flex justify-content-between align-items-center text-center">
+            <div class="w-50 mx-auto row d-flex justify-content-between align-items-center text-center">
                 <div class="col-12 col-md-6 poppins-light text-center text-white" id="playerScore">Player: 0</div>
                 <div class="col-12 col-md-6 poppins-light text-center text-white" id="computerScore">Computer: 0</div>
             </div>
-            <div class="row mx-auto flex align-items-center">
-                <div class="col-12 text-warning text-uppercase text-center my-4 poppins-medium" id="result">
-                    No results
+            <div class="row d-flex align-items-center">
+                <div class="col-12 text-warning text-uppercase text-center my-4 poppins-medium" id="result"> No results
                 </div>
-                <div class="col-12">
-                    <div class="row w-50 mx-auto flex justify-content-between">
-                        <div class="col-6 col-md-4">
-                            <img class="spin-btn img-fluid" src="./img/rock.png" alt="rock button" id="rockBtn"
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="row d-flex w-75">
+                        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+                            <img class="spin-btn img-fluid" lazy src="./img/rock.png" alt="rock button" id="rockBtn"
                                 onclick="play('rock')" />
                         </div>
-                        <div class="col-6 col-md-4">
-                            <img class="spin-btn img-fluid" src="./img/paper.png" alt="paper button" id="paperBtn"
+                        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+                            <img class="spin-btn img-fluid" lazy src="./img/paper.png" alt="paper button" id="paperBtn"
                                 onclick="play('paper')" />
                         </div>
-                        <div class="col-6 col-md-4">
-                            <img class="spin-btn img-fluid" src="./img/scissors.png" alt="scissors button"
+                        <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+                            <img class="spin-btn img-fluid" lazy src="./img/scissors.png" alt="scissors button"
                                 id="scissorsBtn" onclick="play('scissors')" />
                         </div>
                     </div>
@@ -91,39 +86,26 @@
             </div>
         </div>
     </div>
-
     <footer>
         <div class="container">
             <div class="flex row justify-content-center align-items-bottom">
                 <p class="copyright-text m-0 fs-6 fw-light">&copy; May 24th, 2024 - by CCL Mentoring Program. All Right
-                    Reserved.
-                    Created for
-                    Educational
-                    Purposes.</p>
+                    Reserved. Created for Educational Purposes.</p>
             </div>
-
         </div>
     </footer>
-
     <audio id="clickSound">
-        <source src="./audios/click.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        <source src="./audios/click.mp3" type="audio/mpeg"> Your browser does not support the audio element.
     </audio>
-
     <audio id="winSound">
-        <source src="./audios/tada.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        <source src="./audios/tada.mp3" type="audio/mpeg"> Your browser does not support the audio element.
     </audio>
     <audio id="loseSound">
-        <source src="./audios/lose.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        <source src="./audios/lose.mp3" type="audio/mpeg"> Your browser does not support the audio element.
     </audio>
-
     <audio id="bkMusic" autoplay loop>
-        <source src="./audios/bassa_island.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        <source src="./audios/bassa_island.mp3" type="audio/mpeg"> Your browser does not support the audio element.
     </audio>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
